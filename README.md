@@ -46,14 +46,16 @@ Then in your view
 
 <bgf-pagination
   collection="someVariable"
-  url="'http://api.server.com/stuff'">
+  url="'http://api.server.com/stuff'"
+  identifier="'someIdentifier'">
 </bgf-pagination>
 ```
 
 The `pagination` directive uses an external template stored in
 `tpl/paginate-anything.html`.  Host it in a place accessible to
-your page and set the `templateUrl` attribute. Note that the `url`
-param can be a scope variable as well as a hard-coded string.
+your page and set the `templateUrl` attribute. Note that the `url` 
+and `identifier` params can be a scope variable as well as a hard-
+coded string.
 
 ### Benefits
 
@@ -65,7 +67,36 @@ param can be a scope variable as well as a hard-coded string.
 * Keeps items in view when changing page size
 * Twitter Bootstrap compatible markup
 
-### Directive Attributes
+### Required Directive Attributes
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Access</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>url</td>
+      <td>url of endpoint which returns a JSON array</td>
+      <td>Read/write. Changing it will reset to the first page.</td>
+    </tr>
+    <tr>
+      <td>collection</td>
+      <td>the variable where your requested results will be stored</td>
+      <td>Read/write.</td>
+    </tr>
+    <tr>
+      <td>identifier</td>
+      <td>unique identifier to distinguish between multiple paginated elements</td>
+      <td>Read/write.</td>
+    </tr>
+  </tbody>
+</table>
+
+### Optional Directive Attributes
 
 <table>
   <thead>

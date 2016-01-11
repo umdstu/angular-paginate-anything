@@ -41,6 +41,7 @@
           // required
           url: '=',
           collection: '=',
+          identifier: '=',
 
           // optional
           urlParams: '=?',
@@ -129,7 +130,7 @@
           };
 
           function requestRange(request) {
-            $scope.$emit('pagination:loadStart', request);
+            $scope.$emit('pagination:'+ $scope.identifier + ':loadStart', request);
             $http({
               method: $scope.method || 'GET',
               url: $scope.url,
@@ -178,9 +179,9 @@
               }
               $scope.numPages = Math.ceil($scope.numItems / ($scope.perPage || defaultPerPage));
 
-              $scope.$emit('pagination:loadPage', status, config);
+              $scope.$emit('pagination:'+ $scope.identifier + ':loadPage', status, config);
             }).error(function (data, status, headers, config) {
-              $scope.$emit('pagination:error', status, config);
+              $scope.$emit('pagination:'+ $scope.identifier + ':error', status, config);
             });
           }
 
